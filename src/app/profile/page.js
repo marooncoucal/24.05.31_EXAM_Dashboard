@@ -29,10 +29,10 @@ const settings = {
 
 export default function Profile() {
     return (
-        <div className='flex w-full h-[93vh]'>
+        <div className='flex w-full'>
 
             {/* sidebar */}
-            <div className="flex fixed h-[93vh] flex-col py-6 px-3 bg-blue-100">
+            <div className="flex fixed h-[94vh] flex-col py-6 px-3 bg-blue-100">
                 <div className="flex flex-col items-center gap-[20px]">
                     <AccountCircleIcon sx={{ fontSize: 52 }} />
                     <HomeIcon sx={{ fontSize: 36 }} />
@@ -101,7 +101,7 @@ export default function Profile() {
                             <div className='flex-1 border-t-[1px] border-zinc-500 pt-[0.5rem]'>Maecenas dictum, risus non cursus viverra, nibh tortor sagittis ex, at varius ligula dui et quam.</div>
                         </div>
                     </div>
-                    <div className='flex flex-col bg-blue-50 rounded-[32px] p-8 max-w-[20%]'>
+                    <div className='flex flex-col bg-blue-50 rounded-[32px] p-8 max-w-[30%]'>
                         <div className='font-bold text-[24px]'>Loren Ipsum</div>
                         <div className=''>Nam auctor quam ornare tristique auctor.</div>
                         <Gauge
