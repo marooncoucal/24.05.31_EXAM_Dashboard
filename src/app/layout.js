@@ -8,6 +8,7 @@ export default function RootLayout({ children }) {
     <html>
       <body>
         <Nav />
+        <div className="h-[70px]"></div>
         {children}
       </body>
     </html>

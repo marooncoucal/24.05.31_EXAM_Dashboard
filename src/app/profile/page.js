@@ -18,7 +18,13 @@ import { ScatterChart } from '@mui/x-charts/ScatterChart';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import { SparkLineChart } from '@mui/x-charts/SparkLineChart';
+import { Gauge, gaugeClasses } from '@mui/x-charts/Gauge';
 
+const settings = {
+    width: 200,
+    height: 200,
+    value: 60,
+};
 
 
 export default function Profile() {
@@ -26,7 +32,7 @@ export default function Profile() {
         <div className='flex w-full h-[93vh]'>
 
             {/* sidebar */}
-            <div className="flex flex-col py-6 px-3 bg-blue-100">
+            <div className="flex fixed h-[93vh] flex-col py-6 px-3 bg-blue-100">
                 <div className="flex flex-col items-center gap-[20px]">
                     <AccountCircleIcon sx={{ fontSize: 52 }} />
                     <HomeIcon sx={{ fontSize: 36 }} />
@@ -39,62 +45,81 @@ export default function Profile() {
             </div>
 
             {/* charts */}
-            <div className='w-full flex flex-col gap-[24px] p-8'>
-
-                <div className="gap-[24px] bg-blue-50 rounded-[32px] h-[19rem] flex-1 items-center p-8">
-                    <div className='font-bold text-[24px]'>Loren Ipsum</div>
-                    <div className=''>Nam auctor quam ornare tristique auctor.</div>
-                    <Stack direction="row" >
-                        <Box sx={{ flexGrow: 1 }}>
-                            <SparkLineChart
-                                data={[1, 4, 2, 5, 7, 2, 4, 6]}
-                                xAxis={{
-                                    scaleType: 'time',
-                                    data: [
-                                        new Date(2022, 5, 1),
-                                        new Date(2022, 5, 2),
-                                        new Date(2022, 5, 5),
-                                        new Date(2022, 5, 6),
-                                        new Date(2022, 5, 7),
-                                        new Date(2022, 5, 8),
-                                        new Date(2022, 5, 11),
-                                        new Date(2022, 5, 12),
-                                    ],
-                                    valueFormatter: (value) => value.toISOString().slice(0, 10),
-                                }}
-                                height={100}
-                                showTooltip
-                                showHighlight
-                            />
-                        </Box>
-                        <Box sx={{ flexGrow: 1 }}>
-                            <SparkLineChart
-                                plotType="bar"
-                                data={[1, 4, 2, 5, 7, 2, 4, 6]}
-                                height={100}
-                                showTooltip
-                                showHighlight
-                                xAxis={{
-                                    scaleType: 'band',
-                                    data: [
-                                        new Date(2016, 0, 1),
-                                        new Date(2017, 0, 1),
-                                        new Date(2018, 0, 1),
-                                        new Date(2019, 0, 1),
-                                        new Date(2020, 0, 1),
-                                        new Date(2021, 0, 1),
-                                        new Date(2022, 0, 1),
-                                        new Date(2023, 0, 1),
-                                    ],
-                                    valueFormatter: (value) => value.getFullYear(),
-                                }}
-                            />
-                        </Box>
-                    </Stack>
-                    <div className=''></div>
-                    <div className='flex mt-[1rem] gap-[24px]'>
-                        <div className='flex-1 border-t-[1px] border-zinc-500 pt-[0.5rem]'>Nam auctor quam ornare tristique auctor. Nam auctor quam ornare tristique auctor. </div>
-                        <div className='flex-1 border-t-[1px] border-zinc-500 pt-[0.5rem]'>Maecenas dictum, risus non cursus viverra, nibh tortor sagittis ex, at varius ligula dui et quam.</div>
+            <div className='pl-[110px] w-full flex flex-col gap-[24px] p-8'>
+                <div className='flex gap-[24px]'>
+                    <div className="gap-[24px] bg-blue-50 rounded-[32px] items-center p-8">
+                        <div className='font-bold text-[24px]'>Loren Ipsum</div>
+                        <div className=''>Nam auctor quam ornare tristique auctor.</div>
+                        <Stack direction="row" className='h-[70%] pt-8'>
+                            <Box sx={{ flexGrow: 1 }}>
+                                <SparkLineChart
+                                    data={[1, 4, 2, 5, 7, 2, 4, 6]}
+                                    xAxis={{
+                                        scaleType: 'time',
+                                        data: [
+                                            new Date(2022, 5, 1),
+                                            new Date(2022, 5, 2),
+                                            new Date(2022, 5, 5),
+                                            new Date(2022, 5, 6),
+                                            new Date(2022, 5, 7),
+                                            new Date(2022, 5, 8),
+                                            new Date(2022, 5, 11),
+                                            new Date(2022, 5, 12),
+                                        ],
+                                        valueFormatter: (value) => value.toISOString().slice(0, 10),
+                                    }}
+                                    showTooltip
+                                    showHighlight
+                                />
+                            </Box>
+                            <Box sx={{ flexGrow: 1 }}>
+                                <SparkLineChart
+                                    plotType="bar"
+                                    data={[1, 4, 2, 5, 7, 2, 4, 6]}
+                                    showTooltip
+                                    showHighlight
+                                    xAxis={{
+                                        scaleType: 'band',
+                                        data: [
+                                            new Date(2016, 0, 1),
+                                            new Date(2017, 0, 1),
+                                            new Date(2018, 0, 1),
+                                            new Date(2019, 0, 1),
+                                            new Date(2020, 0, 1),
+                                            new Date(2021, 0, 1),
+                                            new Date(2022, 0, 1),
+                                            new Date(2023, 0, 1),
+                                        ],
+                                        valueFormatter: (value) => value.getFullYear(),
+                                    }}
+                                />
+                            </Box>
+                        </Stack>
+                        <div className=''></div>
+                        <div className='flex mt-[1rem] gap-[24px]'>
+                            <div className='flex-1 border-t-[1px] border-zinc-500 pt-[0.5rem]'>Nam auctor quam ornare tristique auctor. Nam auctor quam ornare tristique auctor. </div>
+                            <div className='flex-1 border-t-[1px] border-zinc-500 pt-[0.5rem]'>Maecenas dictum, risus non cursus viverra, nibh tortor sagittis ex, at varius ligula dui et quam.</div>
+                        </div>
+                    </div>
+                    <div className='flex flex-col bg-blue-50 rounded-[32px] p-8 max-w-[20%]'>
+                        <div className='font-bold text-[24px]'>Loren Ipsum</div>
+                        <div className=''>Nam auctor quam ornare tristique auctor.</div>
+                        <Gauge
+                            {...settings}
+                            cornerRadius="50%"
+                            sx={(theme) => ({
+                                [`& .${gaugeClasses.valueText}`]: {
+                                    fontSize: 50,
+                                },
+                                [`& .${gaugeClasses.valueArc}`]: {
+                                    fill: '#52b202',
+                                },
+                                [`& .${gaugeClasses.referenceArc}`]: {
+                                    fill: theme.palette.text.disabled,
+                                },
+                            })}
+                        />
+                        <div className='text-[14px] text-zinc-500'>Nam auctor quam ornare tristique auctor.Maecenas dictum, risus non cursus viverra, nibh tortor sagittis ex, at varius ligula dui et quam.</div>
                     </div>
                 </div>
 
