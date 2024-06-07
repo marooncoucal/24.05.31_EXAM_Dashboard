@@ -19,6 +19,134 @@ import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import { SparkLineChart } from '@mui/x-charts/SparkLineChart';
 
+
+
+export default function Profile() {
+    return (
+        <div className='flex w-full h-[93vh]'>
+
+            {/* sidebar */}
+            <div className="flex flex-col py-6 px-3 bg-blue-100">
+                <div className="flex flex-col items-center gap-[20px]">
+                    <AccountCircleIcon sx={{ fontSize: 52 }} />
+                    <HomeIcon sx={{ fontSize: 36 }} />
+                    <InsightsIcon sx={{ fontSize: 36 }} />
+                    <SettingsIcon sx={{ fontSize: 36 }} />
+                </div>
+                <div className="mt-auto">
+                    <Link href={"/"}><IconButton ><LogoutIcon sx={{ fontSize: 40, color: blue[900] }} /></IconButton></Link>
+                </div>
+            </div>
+
+            {/* charts */}
+            <div className='w-full flex flex-col gap-[24px] p-8'>
+
+                <div className="gap-[24px] bg-blue-50 rounded-[32px] h-[19rem] flex-1 items-center p-8">
+                    <div className='font-bold text-[24px]'>Loren Ipsum</div>
+                    <div className=''>Nam auctor quam ornare tristique auctor.</div>
+                    <Stack direction="row" >
+                        <Box sx={{ flexGrow: 1 }}>
+                            <SparkLineChart
+                                data={[1, 4, 2, 5, 7, 2, 4, 6]}
+                                xAxis={{
+                                    scaleType: 'time',
+                                    data: [
+                                        new Date(2022, 5, 1),
+                                        new Date(2022, 5, 2),
+                                        new Date(2022, 5, 5),
+                                        new Date(2022, 5, 6),
+                                        new Date(2022, 5, 7),
+                                        new Date(2022, 5, 8),
+                                        new Date(2022, 5, 11),
+                                        new Date(2022, 5, 12),
+                                    ],
+                                    valueFormatter: (value) => value.toISOString().slice(0, 10),
+                                }}
+                                height={100}
+                                showTooltip
+                                showHighlight
+                            />
+                        </Box>
+                        <Box sx={{ flexGrow: 1 }}>
+                            <SparkLineChart
+                                plotType="bar"
+                                data={[1, 4, 2, 5, 7, 2, 4, 6]}
+                                height={100}
+                                showTooltip
+                                showHighlight
+                                xAxis={{
+                                    scaleType: 'band',
+                                    data: [
+                                        new Date(2016, 0, 1),
+                                        new Date(2017, 0, 1),
+                                        new Date(2018, 0, 1),
+                                        new Date(2019, 0, 1),
+                                        new Date(2020, 0, 1),
+                                        new Date(2021, 0, 1),
+                                        new Date(2022, 0, 1),
+                                        new Date(2023, 0, 1),
+                                    ],
+                                    valueFormatter: (value) => value.getFullYear(),
+                                }}
+                            />
+                        </Box>
+                    </Stack>
+                    <div className=''></div>
+                    <div className='flex mt-[1rem] gap-[24px]'>
+                        <div className='flex-1 border-t-[1px] border-zinc-500 pt-[0.5rem]'>Nam auctor quam ornare tristique auctor. Nam auctor quam ornare tristique auctor. </div>
+                        <div className='flex-1 border-t-[1px] border-zinc-500 pt-[0.5rem]'>Maecenas dictum, risus non cursus viverra, nibh tortor sagittis ex, at varius ligula dui et quam.</div>
+                    </div>
+                </div>
+
+                <div className='flex gap-[24px]'>
+                    <div className="gap-[24px] bg-blue-50 rounded-[32px] h-[18rem] flex-1">
+                        <BarChart
+                            series={[
+                                { data: [35, 44, 24, 34] },
+                                { data: [51, 6, 49, 30] },
+                                { data: [15, 25, 30, 50] },
+                                { data: [60, 50, 15, 25] },
+                            ]}
+                            xAxis={[{ data: ['Q1', 'Q2', 'Q3', 'Q4'], scaleType: 'band' }]}
+                            padding={{ bottom: 10, left: 20, right: 10 }}
+                        />
+                    </div>
+                    <div className="gap-[24px] bg-blue-50 py-8 pr-2 rounded-[32px] h-[18rem] w-[30%] min-w-[400px]">
+                        <PieChart
+                            series={[
+                                {
+                                    data: [
+                                        { id: 0, value: 10, label: 'series A' },
+                                        { id: 1, value: 15, label: 'series B' },
+                                        { id: 2, value: 20, label: 'series C' },
+                                    ],
+                                },
+                            ]}
+                        />
+                    </div>
+                </div>
+
+                <div className='flex gap-[24px]'>
+                    <div className="gap-[24px] bg-blue-50 rounded-[32px] h-[16rem] flex-1">
+                        <ScatterChart
+                            series={[
+                                {
+                                    label: 'Series A',
+                                    data: data.map((v) => ({ x: v.x1, y: v.y1, id: v.id })),
+                                },
+                                {
+                                    label: 'Series B',
+                                    data: data.map((v) => ({ x: v.x1, y: v.y2, id: v.id })),
+                                },
+                            ]}
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 // data for Scatter chart
 const data = [
     {
@@ -183,129 +311,3 @@ const data = [
         y2: 488.06,
     },
 ];
-
-export default function Profile() {
-    return (
-        <div className='flex w-full h-[93vh]'>
-
-            {/* sidebar */}
-            <div className="flex flex-col py-6 px-3 bg-blue-100">
-                <div className="flex flex-col items-center gap-[20px]">
-                    <AccountCircleIcon sx={{ fontSize: 52 }} />
-                    <HomeIcon sx={{ fontSize: 36 }} />
-                    <InsightsIcon sx={{ fontSize: 36 }} />
-                    <SettingsIcon sx={{ fontSize: 36 }} />
-                </div>
-                <div className="mt-auto">
-                    <Link href={"/"}><IconButton ><LogoutIcon sx={{ fontSize: 40, color: blue[900] }} /></IconButton></Link>
-                </div>
-            </div>
-
-            {/* charts */}
-            <div className='w-full flex flex-col gap-[24px] p-8'>
-
-                <div className="gap-[24px] bg-blue-50 rounded-[32px] h-[19rem] flex-1 items-center p-8">
-                    <div className='font-bold text-[24px]'>Loren Ipsum</div>
-                    <div className=''>Nam auctor quam ornare tristique auctor.</div>
-                    <Stack direction="row" >
-                        <Box sx={{ flexGrow: 1 }}>
-                            <SparkLineChart
-                                data={[1, 4, 2, 5, 7, 2, 4, 6]}
-                                xAxis={{
-                                    scaleType: 'time',
-                                    data: [
-                                        new Date(2022, 5, 1),
-                                        new Date(2022, 5, 2),
-                                        new Date(2022, 5, 5),
-                                        new Date(2022, 5, 6),
-                                        new Date(2022, 5, 7),
-                                        new Date(2022, 5, 8),
-                                        new Date(2022, 5, 11),
-                                        new Date(2022, 5, 12),
-                                    ],
-                                    valueFormatter: (value) => value.toISOString().slice(0, 10),
-                                }}
-                                height={100}
-                                showTooltip
-                                showHighlight
-                            />
-                        </Box>
-                        <Box sx={{ flexGrow: 1 }}>
-                            <SparkLineChart
-                                plotType="bar"
-                                data={[1, 4, 2, 5, 7, 2, 4, 6]}
-                                height={100}
-                                showTooltip
-                                showHighlight
-                                xAxis={{
-                                    scaleType: 'band',
-                                    data: [
-                                        new Date(2016, 0, 1),
-                                        new Date(2017, 0, 1),
-                                        new Date(2018, 0, 1),
-                                        new Date(2019, 0, 1),
-                                        new Date(2020, 0, 1),
-                                        new Date(2021, 0, 1),
-                                        new Date(2022, 0, 1),
-                                        new Date(2023, 0, 1),
-                                    ],
-                                    valueFormatter: (value) => value.getFullYear(),
-                                }}
-                            />
-                        </Box>
-                    </Stack>
-                    <div className=''></div>
-                    <div className='flex mt-[1rem] gap-[24px]'>
-                        <div className='flex-1 border-t-[1px] border-zinc-500 pt-[0.5rem]'>Nam auctor quam ornare tristique auctor. Nam auctor quam ornare tristique auctor. </div>
-                        <div className='flex-1 border-t-[1px] border-zinc-500 pt-[0.5rem]'>Maecenas dictum, risus non cursus viverra, nibh tortor sagittis ex, at varius ligula dui et quam.</div>
-                    </div>
-                </div>
-
-                <div className='flex gap-[24px]'>
-                    <div className="gap-[24px] bg-blue-50 rounded-[32px] h-[18rem] flex-1">
-                        <BarChart
-                            series={[
-                                { data: [35, 44, 24, 34] },
-                                { data: [51, 6, 49, 30] },
-                                { data: [15, 25, 30, 50] },
-                                { data: [60, 50, 15, 25] },
-                            ]}
-                            xAxis={[{ data: ['Q1', 'Q2', 'Q3', 'Q4'], scaleType: 'band' }]}
-                            padding={{ bottom: 10, left: 20, right: 10 }}
-                        />
-                    </div>
-                    <div className="gap-[24px] bg-blue-50 py-8 pr-2 rounded-[32px] h-[18rem] w-[30%] min-w-[400px]">
-                        <PieChart
-                            series={[
-                                {
-                                    data: [
-                                        { id: 0, value: 10, label: 'series A' },
-                                        { id: 1, value: 15, label: 'series B' },
-                                        { id: 2, value: 20, label: 'series C' },
-                                    ],
-                                },
-                            ]}
-                        />
-                    </div>
-                </div>
-
-                <div className='flex gap-[24px]'>
-                    <div className="gap-[24px] bg-blue-50 rounded-[32px] h-[16rem] flex-1">
-                        <ScatterChart
-                            series={[
-                                {
-                                    label: 'Series A',
-                                    data: data.map((v) => ({ x: v.x1, y: v.y1, id: v.id })),
-                                },
-                                {
-                                    label: 'Series B',
-                                    data: data.map((v) => ({ x: v.x1, y: v.y2, id: v.id })),
-                                },
-                            ]}
-                        />
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
